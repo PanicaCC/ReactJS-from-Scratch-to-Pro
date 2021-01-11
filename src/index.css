@@ -5,3 +5,11 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+.bg-success {
+  background: rgba(161,246,69, .7);
+}
+
+.bg-error {
+  background: rgba(240, 87, 108, .7);
+}

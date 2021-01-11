@@ -6,10 +6,14 @@ const ActiveQuiz = props => {
     return (
         <div className={ 'ActiveQuiz' }>
             <p>
-                <strong>2. &nbsp; <span>How are you?</span></strong>
-                <span>2/12</span>
+                <strong>{ props.answerNum }. &nbsp; <span>{ props.question }</span></strong>
+                <span>{ props.answerNum }/{ props.quizLenght }</span>
             </p>
-            <AnswerList answers = { props.answers } />
+            <AnswerList
+                answers = { props.answers }
+                onAnswerClick = { props.onAnswerClick }
+                status = { props.status }
+            />
         </div>
     )
 }

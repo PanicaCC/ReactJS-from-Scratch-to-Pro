@@ -11,6 +11,8 @@ const AnswerList = props => {
                     <AnswerItem
                         key = { index }
                         answer = { answer }
+                        onAnswerClick = { props.onAnswerClick }
+                        status = { props.status ? props.status[answer.id] : null }
                     />
                 )
             }) }
