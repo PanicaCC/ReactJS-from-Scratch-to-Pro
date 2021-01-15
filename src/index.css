@@ -13,3 +13,12 @@ ul {
 .bg-error {
   background: rgba(240, 87, 108, .7);
 }
+
+.c-success {
+  color: rgba(161,246,69, .7);
+}
+
+.c-error {
+  color: rgba(240, 87, 108, .7);
+}
+
