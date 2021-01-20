@@ -1,0 +1,36 @@
+.Drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 300px;
+  box-sizing: border-box;
+  padding-top: 35px;
+  background: #ccd;
+  transform: translateX(0);
+  transition: all ease-in .3s;
+  z-index: 90;
+
+  &.open {
+    transform: translateX(-300px)
+  }
+
+  li {
+    margin-bottom: 15px;
+
+    a {
+      text-decoration: none;
+      color: #5041b2;
+      font-size: 24px;
+      padding: 0 20px 10px 20px;
+      transition: all ease-in .3s;
+
+      &:hover, &:active {
+        color: #796c92;
+        opacity: .7;
+        cursor: pointer; // todo delete after use "href"
+      }
+    }
+  }
+}

@@ -1,17 +1,20 @@
 import React from 'react'
 import './FinishedQuiz.scss'
+import Button from "../UI/Button/Button";
+import { Link } from "react-router-dom";
 
-const FinishedQuiz = (props) => {
+const FinishedQuiz = props => {
+
     const countWriteAnswer = Object.keys(props.results).reduce((total, key) => {
-            if (props.results[key] === 'success'){
-                total++
-            }
-            return total
+        if (props.results[key] === 'success'){
+            total++
+        }
+        return total
     }, 0)
+
     return (
         <div className="FinishedQuiz">
             <h1>Finished</h1>
-
             <ul>
                 {props.quiz.map((quizItem, index) => {
                     const cls = [
@@ -29,17 +32,22 @@ const FinishedQuiz = (props) => {
                     )
                 })}
             </ul>
-
             <p>Right answers is {countWriteAnswer} of {props.quiz.length}</p>
 
             <div className="FinishedQuiz__btn">
-                <button
-                    type={"button"}
-                    onClick={props.onRetry.bind(this)}>
+                <Button
+                    type="primary"
+                    onClick={props.onRetry}
+                >
                     Try again
-                </button>
-            </div>
+                </Button>
+                <Link to={"/"}>
+                    <Button type="success">
+                        Move to another tests
+                    </Button>
+                </Link>
 
+            </div>
         </div>
     )
 }
