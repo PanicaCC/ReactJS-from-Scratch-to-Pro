@@ -24,7 +24,7 @@ const Input = props => {
             <input
                 id={htmlForId}
                 type = {inputType}
-                defaultValue={ props.value }
+                value={ props.value }
                 onChange={ props.onChange }
             />
             {
