@@ -3,6 +3,22 @@ import "./Auth.scss"
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import is from 'is_js'
+import firebase from "firebase/app";
+import 'firebase/auth'
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAIxJfGOL0cGfmPPKn6hHaeVSNflobCniY",
+    authDomain: "quizes-react.firebaseapp.com",
+    databaseURL: "https://quizes-react-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "quizes-react",
+    storageBucket: "quizes-react.appspot.com",
+    messagingSenderId: "836774158327",
+    appId: "1:836774158327:web:0a586cbde0c9df7e6b98f2",
+    measurementId: "G-KRVBE4MFGG"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 class Auth extends Component {
 
@@ -40,12 +56,57 @@ class Auth extends Component {
         event.preventDefault()
     }
 
-    loginHandler() {
-        return false
+    loginHandler(event) {
+        event.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(this.state.formControls.email.value, this.state.formControls.password.value)
+            .then((userCredential) => {
+                var user = userCredential.user;
+
+                console.log(user)
+
+                alert('Authorization successful')
+
+                this.setState({
+                    formControls: {
+                        email: {
+                            value: ''
+                        },
+                        password: {
+                            value: ''
+                        }
+                    }
+                })
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
     }
 
-    registerHandler() {
-        return false
+    registerHandler = event => {
+        event.preventDefault()
+        firebase.auth().createUserWithEmailAndPassword(this.state.formControls.email.value, this.state.formControls.password.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+
+                this.setState({
+                    formControls: {
+                        email: {
+                            value: ''
+                        },
+                        password: {
+                            value: ''
+                        }
+                    }
+                })
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage)
+            });
     }
 
     validateControl (value, validation) {
@@ -122,14 +183,14 @@ class Auth extends Component {
                     <div className="Auth__btns">
                         <Button
                             type = {'success'}
-                            onClick={this.loginHandler}
+                            onClick={event => this.loginHandler(event)}
                             disabled = {!this.state.isFormValid}
                         >
                             Log in
                         </Button>
                         <Button
                             type = {'primary'}
-                            onClick={this.loginHandler}
+                            onClick={event => this.registerHandler(event)}
                             disabled = {!this.state.isFormValid}
                         >
                             Register now

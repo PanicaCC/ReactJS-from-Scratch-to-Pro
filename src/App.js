@@ -15,7 +15,7 @@ class App extends Component {
                 <Route path={'/'} exact={true} component={QuizList} />
                 <Route path={'/auth'} component={Auth} />
                 <Route path={'/quiz-creator'} component={QuizCreator} />
-                <Route path={'/quiz'} component={Quiz} />
+                <Route path={'/quiz/:id'} component={Quiz} />
             </Switch>
         </Layout>
     );

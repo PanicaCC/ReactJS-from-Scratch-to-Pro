@@ -5,7 +5,7 @@ import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
 import Select from "../UI/Select/Select";
-import axios from "axios";
+import axios from "../../axios/axios-quiz"
 
 function createOptionControl(num){
     return createControl({
@@ -53,10 +53,10 @@ class QuizCreator extends Component {
             id: index + 1,
             rightAnswerId: this.state.rightAnswerId,
             answers: [
-                {option1: option1.value, id: option1.id},
-                {option1: option2.value, id: option2.id},
-                {option1: option3.value, id: option3.id},
-                {option1: option4.value, id: option4.id}
+                {text: option1.value, id: option1.id},
+                {text: option2.value, id: option2.id},
+                {text: option3.value, id: option3.id},
+                {text: option4.value, id: option4.id}
             ]
         }
 
@@ -74,7 +74,7 @@ class QuizCreator extends Component {
         event.preventDefault()
 
         try {
-            await axios.post('https://quizes-react-default-rtdb.europe-west1.firebasedatabase.app/quizes.json', this.state.quiz)
+            await axios.post('/quizes.json', this.state.quiz)
         } catch (e){
             console.log(e)
         }
@@ -128,10 +128,10 @@ class QuizCreator extends Component {
             value={this.state.rightAnswerId}
             onChange={this.selectChangeHandler}
             options={[
-                {text: 'text 1', value: 1},
-                {text: 'text 2', value: 2},
-                {text: 'text 3', value: 3},
-                {text: 'text 4', value: 4}
+                {text: 'answer', value: 1},
+                {text: 'answer', value: 2},
+                {text: 'answer', value: 3},
+                {text: 'answer', value: 4}
             ]}
         />
         return (
