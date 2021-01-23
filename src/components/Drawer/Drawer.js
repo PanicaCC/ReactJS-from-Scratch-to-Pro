@@ -4,11 +4,11 @@ import Backdrop from "../UI/Backdrop/Backdrop";
 import { NavLink } from 'react-router-dom';
 
 const links = [
-    {
-        to: '/quiz',
-        exact: false,
-        label: 'Quiz'
-    },
+    // {
+    //     to: '/quiz',
+    //     exact: false,
+    //     label: 'Quiz'
+    // },
     {
         to: '/',
         exact: true,
