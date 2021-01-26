@@ -8,7 +8,6 @@ import {fetchQuizes} from "../../store/actions/quiz";
 class QuizList extends Component {
 
     QuizRenderHandler() {
-        console.log(this.props)
         return this.props.quizLists.map(quiz => {
             return (
                 <li key={quiz.id}>
