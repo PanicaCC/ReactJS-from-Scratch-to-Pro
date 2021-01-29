@@ -43,7 +43,7 @@ class QuizList extends Component {
 function mapStateToProps(state){
     return {
         quizLists: state.quiz.quizLists,
-        loader: state.quiz.loader
+        loader: state.quiz.loader,
     }
 }
 
